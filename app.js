@@ -15,7 +15,11 @@ app.all('*',(req,res)=>{
 
 
 const mongoConnstr=`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@shay.uijvx.mongodb.net/?retryWrites=true&w=majority&appName=Shay`
-mongoose.connect(mongoConnstr).then(()=>{
-    console.log(`Connected To Mongo`);
-});
+mongoose.connect(mongoConnstr, { useNewUrlParser: true,useUnifiedTopology:true
+})
+    .then(() => console.log('Connected To Mongo'))
+    .catch((err) => console.error('Connection Failed:', err));
+
+
+
 module.exports=app;
