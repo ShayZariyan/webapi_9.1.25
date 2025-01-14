@@ -3,6 +3,8 @@ const app=express();
 const mongoose=require('mongoose');
 const prodrouter=require('./api/v1/routes/product');
 const catrouter=require('./api/v1/routes/categories');
+const Orderrouter=require('./api/v1/routes/orders');
+const Usersrouter=require('./api/v1/routes/users');
 const morgan = require('morgan');
 app.use(express.json());
 app.use(express.urlencoded());
@@ -11,6 +13,8 @@ const secure=require('./api/v1/middlewares/secure');
 app.use(secure);
 app.use('/product',prodrouter);
 app.use('/category',catrouter);
+app.use('/user',Usersrouter);
+app.use('/order',Orderrouter);
 app.all('*',(req,res)=>{
     return res.status(404).json({Msg:"Not Found Error 404"});
 });
