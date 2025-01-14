@@ -4,7 +4,9 @@ _id:mongoose.Schema.Types.ObjectId,
 Pid:Number,
 Pname:String,
 Price:Number,
-Pdesc:String
+picname:String,
+Pdesc:String,
+cid:Number
 });
 const ProductModel = mongoose.model('Product', ProductSchema, 'products');
 
